@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { cloneElement, isValidElement, useState } from "react";
 
 const categories = [
   "All",
   "Traditional Stews & Wat",
   "Tibs & Grills",
+  "Raw & Cured Delicacies / Kitfo",
   "Fasting & Vegan / Tsom",
   "Beverages & Tej",
 ];
@@ -19,11 +20,13 @@ export default function FilterShell({ children }) {
         {categories.map((category) => (
           <button
             key={category}
+            type="button"
+            aria-pressed={selected === category}
             onClick={() => setSelected(category)}
-            className={`min-h-11 min-w-11 rounded-full px-4 py-2 text-sm ${
+            className={`min-h-11 min-w-11 rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
               selected === category
-                ? "bg-gray-900 text-white"
-                : "bg-gray-200 text-gray-700"
+                ? "border-gray-900 bg-gray-900 text-white"
+                : "border-gray-200 bg-white text-gray-700 hover:bg-gray-100"
             }`}
           >
             {category}
@@ -31,7 +34,9 @@ export default function FilterShell({ children }) {
         ))}
       </div>
 
-      {children}
+      {isValidElement(children)
+        ? cloneElement(children, { selectedCategory: selected })
+        : children}
     </div>
   );
 }

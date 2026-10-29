@@ -1,7 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt =
-  "Addis Eats — traditional Ethiopian food delivered in Addis Ababa";
+export const alt = "Mesob House — Ethiopian food and hospitality";
 
 export const size = {
   width: 1200,
@@ -20,8 +19,8 @@ export default function OpenGraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px",
-        background: "linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%)",
-        color: "#431407",
+        background: "linear-gradient(135deg, #fffaf6 0%, #f6ddcd 100%)",
+        color: "#30211d",
         fontFamily: "Arial, sans-serif",
       }}
     >
@@ -30,10 +29,10 @@ export default function OpenGraphImage() {
           display: "flex",
           fontSize: 30,
           fontWeight: 700,
-          color: "#c2410c",
+          color: "#183f30",
         }}
       >
-        ADDIS EATS
+        MESOB HOUSE
       </div>
 
       <div
@@ -51,7 +50,7 @@ export default function OpenGraphImage() {
             lineHeight: 1.1,
           }}
         >
-          Ethiopian food,
+          Communal warmth,
         </div>
 
         <div
@@ -60,25 +59,26 @@ export default function OpenGraphImage() {
             fontSize: 64,
             fontWeight: 800,
             lineHeight: 1.1,
+            color: "#8e210c",
           }}
         >
-          made memorable.
+          slow-cooked heritage.
         </div>
 
         <div
           style={{
             display: "flex",
             fontSize: 30,
-            color: "#7c2d12",
+            color: "#735d54",
             marginTop: 12,
           }}
         >
-          Traditional flavors delivered across Addis Ababa
+          Discover Ethiopian culinary traditions.
         </div>
       </div>
 
       <div style={{ display: "flex", fontSize: 23, fontWeight: 600 }}>
-        Discover your next favorite dish
+        Mesob House · Habesha Hospitality
       </div>
     </div>,
     { ...size },

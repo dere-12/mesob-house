@@ -1,4 +1,4 @@
-const description = "Track the status of an order placed through Addis Eats.";
+const description = "Track the status of an order placed through Mesob House.";
 
 export const metadata = {
   title: "Order Status",

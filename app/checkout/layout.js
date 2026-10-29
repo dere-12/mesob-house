@@ -1,5 +1,5 @@
 const description =
-  "Complete your Addis Eats order with your delivery and contact details.";
+  "Complete your Mesob House order with your delivery and contact details.";
 
 export const metadata = {
   title: "Checkout",

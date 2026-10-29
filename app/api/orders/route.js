@@ -1,8 +1,15 @@
-import z from "zod";
+import { z } from "zod";
 import { createOrder } from "@/lib/db";
 import { orderSchema } from "@/lib/schema";
+import { getSession } from "@/lib/session";
 
 export async function POST(request) {
+  const user = await getSession();
+
+  if (!user) {
+    return Response.json({ error: "Not signed in" }, { status: 401 });
+  }
+
   let body;
 
   try {
@@ -23,7 +30,16 @@ export async function POST(request) {
     );
   }
 
-  const order = await createOrder(result.data);
+  try {
+    const order = await createOrder(result.data, user.id);
 
-  return Response.json(order, { status: 201 });
+    return Response.json(order, { status: 201 });
+  } catch (error) {
+    console.error("Failed to create order:", error);
+
+    return Response.json(
+      { error: "Could not create the order." },
+      { status: 500 },
+    );
+  }
 }

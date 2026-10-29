@@ -1,33 +1,40 @@
+import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Providers } from "./providers";
 import { siteUrl } from "@/lib/seo";
 
-const inter = Inter({
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
 const siteDescription =
-  "Discover traditional Ethiopian dishes and order your favorites for delivery across Addis Ababa.";
+  "Discover Ethiopian food traditions, explore authentic flavors, and order your favorites from Mesob House.";
 
 export const metadata = {
   metadataBase: siteUrl,
 
   title: {
-    default: "Addis Eats - Food Delivery in Addis Ababa",
-    template: "%s | Addis Eats",
+    default: "Mesob House | Ethiopian Food & Hospitality",
+    template: "%s | Mesob House",
   },
 
   description: siteDescription,
-  applicationName: "Addis Eats",
+  applicationName: "Mesob House",
 
   openGraph: {
-    title: "Ethiopian Food Delivery in Addis Ababa | Addis Eats",
+    title: "Mesob House | Ethiopian Food & Hospitality",
     description: siteDescription,
-    siteName: "Addis Eats",
+    siteName: "Mesob House",
     locale: "en_ET",
     type: "website",
   },
@@ -35,11 +42,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html
+      lang="en"
+      className={`${playfairDisplay.variable} ${plusJakartaSans.variable}`}
+    >
+      <body className={plusJakartaSans.className}>
         <Providers>
           <Header />
-          <main>{children}</main>
+          <div id="site-content">{children}</div>
           <Footer />
         </Providers>
       </body>

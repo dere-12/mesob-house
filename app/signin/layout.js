@@ -1,5 +1,5 @@
 const description =
-  "Sign in to Addis Eats to manage your orders and continue to checkout.";
+  "Sign in to Mesob House to manage your orders and continue to checkout.";
 
 export const metadata = {
   title: "Sign In",

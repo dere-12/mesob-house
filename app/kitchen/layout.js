@@ -1,5 +1,5 @@
 const description =
-  "Staff-only dashboard for viewing and preparing Addis Eats orders.";
+  "Staff-only dashboard for viewing and preparing Mesob House orders.";
 
 export const metadata = {
   title: "Kitchen Dashboard",

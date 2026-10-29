@@ -5,13 +5,20 @@ import { getDishes, getDishBySlug } from "@/lib/menu";
 import { getDishImage } from "@/lib/dish-images";
 import { etb } from "@/lib/format";
 import { absoluteUrl, shortenDescription, socialMetadata } from "@/lib/seo";
+import AddToCartButton from "./AddToCartButton";
 
 export async function generateStaticParams() {
-  const dishes = await getDishes();
+  try {
+    const dishes = await getDishes();
 
-  return dishes.map((dish) => ({
-    id: dish.slug,
-  }));
+    return dishes.map((dish) => ({
+      id: dish.slug,
+    }));
+  } catch (error) {
+    console.error("Could not prebuild dish routes:", error);
+
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }) {
@@ -22,14 +29,14 @@ export async function generateMetadata({ params }) {
     return {
       title: "Dish Not Found",
       description:
-        "The requested dish could not be found in the Addis Eats menu.",
+        "The requested dish could not be found in the Mesob House menu.",
     };
   }
 
   const description = shortenDescription(
     `${dish.nameEn} costs ${etb.format(dish.priceETB)}. ${
       dish.description || "Explore this traditional Ethiopian dish."
-    } Order for delivery across Addis Ababa.`,
+    } Order from the Mesob House menu.`,
   );
 
   return {
@@ -56,7 +63,10 @@ export default async function DishPage({ params }) {
   }
 
   const dishDescription =
-    dish.description || `${dish.nameEn} is available from the Addis Eats menu.`;
+    dish.description ||
+    `${dish.nameEn} is available from the Mesob House menu.`;
+
+  const ingredients = Array.isArray(dish.ingredients) ? dish.ingredients : [];
 
   const menuItemJsonLd = {
     "@context": "https://schema.org",
@@ -81,7 +91,7 @@ export default async function DishPage({ params }) {
         }}
       />
 
-      <article className="mx-auto w-[90%] max-w-4xl py-10">
+      <article className="mx-auto w-[60%] max-w-4xl py-10">
         <Link
           href="/menu"
           className="touch-target text-sm text-blue-600 hover:underline"
@@ -89,7 +99,7 @@ export default async function DishPage({ params }) {
           ← Back to Menu
         </Link>
 
-        <div className="mt-6 rounded-xl border bg-white p-6 shadow-sm">
+        <div className="mt-6 rounded-xl border border-gray-200 bg-white p-5 shadow-sm sm:p-6">
           <div className="mb-6 overflow-hidden rounded-lg">
             <Image
               src={getDishImage(dish)}
@@ -103,8 +113,10 @@ export default async function DishPage({ params }) {
 
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold">{dish.nameEn}</h1>
-              <p className="mt-1 text-lg text-gray-500">{dish.nameAm}</p>
+              <h1 className="font-display text-3xl font-bold">{dish.nameEn}</h1>
+              {dish.nameAm && (
+                <p className="mt-1 text-lg text-gray-500">{dish.nameAm}</p>
+              )}
             </div>
 
             {dish.isSpecial && (
@@ -114,7 +126,7 @@ export default async function DishPage({ params }) {
             )}
           </div>
 
-          <p className="mt-6 text-gray-700">{dishDescription}</p>
+          <p className="mt-6 leading-7 text-gray-700">{dishDescription}</p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             <div>
@@ -127,25 +139,34 @@ export default async function DishPage({ params }) {
               <p className="font-bold">{etb.format(dish.priceETB)}</p>
             </div>
 
-            <div>
-              <p className="text-sm text-gray-500">Spice Level</p>
-              <p className="font-medium">{dish.spiceLevel}</p>
-            </div>
+            {dish.spiceLevel && (
+              <div>
+                <p className="text-sm text-gray-500">Spice Level</p>
+                <p className="font-medium">{dish.spiceLevel}</p>
+              </div>
+            )}
 
-            <div>
-              <p className="text-sm text-gray-500">Servings</p>
-              <p className="font-medium">{dish.servings}</p>
-            </div>
+            {dish.servings && (
+              <div>
+                <p className="text-sm text-gray-500">Servings</p>
+                <p className="font-medium">{dish.servings}</p>
+              </div>
+            )}
           </div>
 
-          <div className="mt-8">
-            <h2 className="text-xl font-bold">Ingredients</h2>
+          {ingredients.length > 0 && (
+            <div className="mt-8">
+              <h2 className="font-display text-xl font-bold">Ingredients</h2>
+              <ul className="mt-3 list-inside list-disc text-gray-700">
+                {ingredients.map((ingredient) => (
+                  <li key={ingredient}>{ingredient}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
-            <ul className="mt-3 list-inside list-disc text-gray-700">
-              {dish.ingredients.map((ingredient) => (
-                <li key={ingredient}>{ingredient}</li>
-              ))}
-            </ul>
+          <div className="mt-8">
+            <AddToCartButton dish={dish} />
           </div>
         </div>
       </article>

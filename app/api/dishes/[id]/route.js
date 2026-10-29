@@ -1,18 +1,26 @@
-import { getDishes } from "@/lib/menu.js";
+import { getDishes } from "@/lib/menu";
 
 export async function GET(request, { params }) {
   const { id } = await params;
 
-  const dishes = await getDishes();
+  try {
+    const dishes = await getDishes();
+    const dish = dishes.find((item) => item.id === id || item.slug === id);
 
-  const dish = dishes.find((dish) => dish.id === id || dish.slug === id);
+    if (!dish) {
+      return Response.json(
+        { error: `Dish '${id}' was not found.` },
+        { status: 404 },
+      );
+    }
 
-  if (!dish) {
+    return Response.json(dish);
+  } catch (error) {
+    console.error("Failed to load the requested dish:", error);
+
     return Response.json(
-      { error: `Dish with slug: '${id}' not found` },
-      { status: 404 },
+      { error: "The menu service is temporarily unavailable." },
+      { status: 503 },
     );
   }
-
-  return Response.json(dish);
 }

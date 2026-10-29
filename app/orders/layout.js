@@ -1,5 +1,5 @@
 const description =
-  "View the status and details of orders placed through your Addis Eats account.";
+  "View the status and details of orders placed through your Mesob House account.";
 
 export const metadata = {
   title: "My Orders",

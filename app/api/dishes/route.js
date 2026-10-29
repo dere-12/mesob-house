@@ -18,7 +18,12 @@ export async function GET(request) {
       : dishes;
 
     return Response.json(filteredDishes);
-  } catch {
-    return Response.json({ error: "Failed to load dishes." }, { status: 500 });
+  } catch (error) {
+    console.error("Failed to serve menu data:", error);
+
+    return Response.json(
+      { error: "The menu service is temporarily unavailable." },
+      { status: 503 },
+    );
   }
 }
