@@ -46,10 +46,16 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${playfairDisplay.variable} ${plusJakartaSans.variable}`}
     >
-      <body className={plusJakartaSans.className}>
+      <body
+        className={`${plusJakartaSans.className} flex min-h-screen flex-col`}
+      >
         <Providers>
           <Header />
-          <div id="site-content">{children}</div>
+
+          <div id="site-content" className="flex-1">
+            {children}
+          </div>
+
           <Footer />
         </Providers>
       </body>

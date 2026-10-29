@@ -14,8 +14,8 @@
   --color-gray-500: #897168;
   --color-gray-600: #735d54;
   --color-gray-700: #503c34;
-  --color-gray-800: #2b3d33;
-  --color-gray-900: #183f30;
+  --color-gray-800: #741a09;
+  --color-gray-900: #8e210c;
   --color-slate-100: #f8eee7;
   --color-slate-600: #735d54;
   --color-red-50: #fff3ee;
@@ -46,6 +46,10 @@ body {
   padding: 0;
 }
 
+html {
+  scroll-padding-top: 6rem;
+}
+
 body {
   background: #fffaf6;
   color: #30211d;
@@ -67,6 +71,11 @@ h6 {
   line-height: 1.2;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 :where(
   a[href],
   button,
@@ -81,7 +90,7 @@ h6 {
 }
 
 header :where(a[href], button):focus-visible {
-  outline-color: #f4ca78;
+  outline-color: #a87610;
 }
 
 button,
@@ -97,4 +106,9 @@ textarea {
   min-height: 44px;
   align-items: center;
   justify-content: center;
+}
+
+::selection {
+  background: #fbe7d9;
+  color: #30211d;
 }
