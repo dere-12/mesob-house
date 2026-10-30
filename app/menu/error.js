@@ -5,7 +5,7 @@ export default function Error({ reset }) {
     <div className="rounded-lg border border-red-200 bg-red-50 p-6">
       <h2 className="text-xl font-bold text-red-700">Something went wrong!</h2>
 
-      <p className="mt-2 text-red-600">We couldn't load the menu.</p>
+      <p className="mt-2 text-red-600">We couldn&apos;t load the menu.</p>
 
       <button
         onClick={() => reset()}
