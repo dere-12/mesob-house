@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 import { getOrder } from "@/lib/db";
@@ -28,7 +29,15 @@ export default async function OrderPage({ params }) {
 
   return (
     <main className="mx-auto w-[90%] max-w-3xl py-10">
-      <h1 className="text-3xl font-bold">Order Status</h1>
+      <Link
+        href="/orders"
+        className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 text-sm font-semibold text-[#8e210c] shadow-sm transition-shadow hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a87610]"
+      >
+        <span aria-hidden="true">←</span>
+        Back to Orders
+      </Link>
+
+      <h1 className="mt-6 font-display text-3xl font-bold">Order Status</h1>
 
       <p className="mt-2 text-gray-600">Tracking order: {order.id}</p>
 

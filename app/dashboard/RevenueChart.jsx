@@ -14,8 +14,10 @@ import { compactNumber, etb } from "@/lib/format";
 
 export default function RevenueChart({ data }) {
   return (
-    <section className="rounded-lg border p-4 sm:p-6">
-      <h2 className="text-xl font-semibold">Revenue by Neighbourhood</h2>
+    <section className="rounded-xl bg-white p-4 shadow-md sm:p-6">
+      <h2 className="font-display text-xl font-semibold">
+        Revenue by Neighbourhood
+      </h2>
 
       <p className="mt-1 text-sm text-gray-600">
         Revenue from non-cancelled orders, in Ethiopian birr (ETB).
@@ -66,7 +68,7 @@ export default function RevenueChart({ data }) {
           </div>
 
           <div className="mt-6">
-            <h3 className="font-semibold">Revenue data</h3>
+            <h3 className="font-sans font-semibold">Revenue data</h3>
 
             <table className="mt-2 w-full border-collapse text-left text-sm">
               <caption className="sr-only">

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import HeaderAuth from "@/components/HeaderAuth";
-import HeaderCart from "@/components/HeaderCart";
+import HeaderNavigation from "@/components/HeaderNavigation";
 
 export default function Header() {
   return (
@@ -20,36 +20,10 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav
-          aria-label="Main navigation"
-          className="flex flex-wrap items-center gap-2"
-        >
-          <Link href="/" className="touch-target px-2 hover:text-[#8e210c]">
-            Home
-          </Link>
-
-          <Link href="/menu" className="touch-target px-2 hover:text-[#8e210c]">
-            Menu
-          </Link>
-
-          <HeaderCart />
-
-          <Link
-            href="/checkout"
-            className="touch-target px-2 hover:text-[#8e210c]"
-          >
-            Checkout
-          </Link>
-
-          <Link
-            href="/orders"
-            className="touch-target px-2 hover:text-[#8e210c]"
-          >
-            Orders
-          </Link>
-
+        <div className="flex flex-wrap items-center justify-end gap-2">
+          <HeaderNavigation />
           <HeaderAuth />
-        </nav>
+        </div>
       </div>
     </header>
   );

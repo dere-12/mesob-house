@@ -3,6 +3,7 @@
 import { useActionState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import { placeOrder } from "@/app/actions";
 import { useCartStore } from "@/lib/cart-store";
 import { etb } from "@/lib/format";
@@ -28,7 +29,7 @@ export default function CheckoutForm() {
 
   if (items.length === 0 && !state?.success) {
     return (
-      <section className="mt-6 rounded-lg border p-6">
+      <section className="mt-6 rounded-xl bg-white p-6 shadow-md">
         <p>Your cart is empty. Add some dishes before checking out.</p>
 
         <Link
@@ -42,7 +43,10 @@ export default function CheckoutForm() {
   }
 
   return (
-    <form action={formAction} className="mt-6 space-y-4 rounded-lg border p-6">
+    <form
+      action={formAction}
+      className="mt-6 space-y-4 rounded-xl bg-white p-6 shadow-md sm:p-8"
+    >
       <div>
         <h2 className="text-xl font-semibold">Your order</h2>
 
@@ -77,7 +81,7 @@ export default function CheckoutForm() {
           name="name"
           required
           minLength={2}
-          className="mt-1 w-full rounded-md border px-3 py-2"
+          className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2"
         />
 
         {state?.fieldErrors?.name?.[0] && (
@@ -99,7 +103,7 @@ export default function CheckoutForm() {
           required
           pattern="(09|[+]2519)[0-9]{8}"
           title="Use 09… or +2519… followed by 8 digits"
-          className="mt-1 w-full rounded-md border px-3 py-2"
+          className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2"
         />
 
         {state?.fieldErrors?.phone?.[0] && (
@@ -119,7 +123,7 @@ export default function CheckoutForm() {
           name="neighbourhood"
           required
           defaultValue=""
-          className="mt-1 w-full rounded-md border px-3 py-2"
+          className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2"
         >
           <option value="" disabled>
             Select your neighbourhood
@@ -146,7 +150,7 @@ export default function CheckoutForm() {
       <button
         type="submit"
         disabled={pending || items.length === 0}
-        className="rounded-md bg-gray-900 px-5 py-2 text-white disabled:opacity-50"
+        className="min-h-11 rounded-md bg-gray-900 px-5 py-2 text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {pending ? "Submitting..." : "Place order"}
       </button>

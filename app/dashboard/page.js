@@ -95,7 +95,7 @@ export default async function DashboardPage({ searchParams }) {
 
   return (
     <main className="mx-auto w-[90%] max-w-6xl py-10">
-      <h1 className="text-3xl font-bold">Staff Dashboard</h1>
+      <h1 className="font-display text-3xl font-bold">Staff Dashboard</h1>
 
       <p className="mt-2 text-gray-600">
         Welcome, {user.name}. Here is the current order summary.
@@ -105,14 +105,16 @@ export default async function DashboardPage({ searchParams }) {
         aria-label="Order summary"
         className="mt-6 grid gap-4 sm:grid-cols-2"
       >
-        <article className="rounded-lg border p-5">
-          <h2 className="text-sm text-gray-600">Total Revenue</h2>
+        <article className="rounded-xl bg-white p-5 shadow-md transition-shadow duration-200 hover:shadow-lg">
+          <h2 className="font-sans text-sm text-gray-600">Total Revenue</h2>
 
           <p className="mt-2 text-2xl font-bold">{etb.format(totalRevenue)}</p>
         </article>
 
-        <article className="rounded-lg border p-5">
-          <h2 className="text-sm text-gray-600">Non-cancelled Orders</h2>
+        <article className="rounded-xl bg-white p-5 shadow-md transition-shadow duration-200 hover:shadow-lg">
+          <h2 className="font-sans text-sm text-gray-600">
+            Non-cancelled Orders
+          </h2>
 
           <p className="mt-2 text-2xl font-bold">
             {number.format(activeOrders)}
@@ -125,7 +127,7 @@ export default async function DashboardPage({ searchParams }) {
       </div>
 
       <section className="mt-10">
-        <h2 className="text-2xl font-semibold">All Orders</h2>
+        <h2 className="font-display text-2xl font-semibold">All Orders</h2>
 
         <p className="mt-1 text-sm text-gray-600">
           Sort the table using the URL options and move between pages.

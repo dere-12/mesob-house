@@ -51,7 +51,7 @@ export default async function OrdersPage() {
                 className="rounded-xl bg-white p-5 shadow-md transition-shadow duration-200 hover:shadow-lg sm:p-6"
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
-                  <div>
+                  <div className="min-w-0">
                     <p className="break-all">
                       <span className="font-semibold">Order ID:</span>{" "}
                       {order.id}
@@ -104,7 +104,7 @@ export default async function OrdersPage() {
                   </div>
                 )}
 
-                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-gray-100 pt-4">
+                <div className="mt-5 flex flex-wrap items-center justify-between gap-3 pt-2">
                   <div>
                     {!isCancelled ? (
                       <form action={cancelOrder.bind(null, order.id)}>

@@ -2,11 +2,9 @@
 
 import { useEffect } from "react";
 import L from "leaflet";
-
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
-
 import { getDemoLocations } from "@/lib/demo-locations";
 
 function makeMarkerIcon(letter, background) {
@@ -44,7 +42,7 @@ export default function DeliveryMap({ neighbourhood }) {
       center={locations.deliveryPosition}
       zoom={13}
       style={{ height: "360px", width: "100%" }}
-      className="z-0 overflow-hidden rounded-lg border"
+      className="z-0 overflow-hidden rounded-xl shadow-md"
       aria-label="Map showing demonstration courier and delivery locations"
     >
       <TileLayer

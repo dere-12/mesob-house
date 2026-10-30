@@ -1,23 +1,42 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import { useCartStore } from "@/lib/cart-store";
 
 export default function HeaderCart() {
+  const pathname = usePathname();
   const items = useCartStore((state) => state.items);
 
-  const itemCount = items.reduce(
-    (total, item) => total + item.quantity,
-    0,
-  );
+  const itemCount = items.reduce((total, item) => total + item.quantity, 0);
+
+  const active = pathname === "/cart" || pathname.startsWith("/cart/");
 
   const badgeLabel = itemCount > 99 ? "99+" : itemCount;
+
+  const tabClass = [
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-3 py-2 text-sm font-medium transition-colors",
+    active
+      ? "border-[#8e210c] bg-[#8e210c] !text-white"
+      : "border-transparent text-gray-700 hover:bg-red-50 hover:text-red-700",
+  ].join(" ");
 
   return (
     <Link
       href="/cart"
       aria-label={`Cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`}
-      className="touch-target relative gap-2 rounded-md px-2 transition-colors hover:bg-[#fbe7d9] hover:text-[#8e210c]"
+      aria-current={active ? "page" : undefined}
+      className={tabClass}
+      style={
+        active
+          ? {
+              color: "#ffffff",
+              backgroundColor: "#8e210c",
+              borderColor: "#8e210c",
+            }
+          : undefined
+      }
     >
       <span className="relative inline-flex">
         <svg
@@ -36,13 +55,17 @@ export default function HeaderCart() {
         </svg>
 
         {itemCount > 0 && (
-          <span className="absolute -right-2 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[#8e210c] px-1 text-[10px] font-bold leading-none text-white">
+          <span
+            className={`absolute -right-2 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full px-1 text-[10px] font-bold leading-none ${
+              active ? "bg-white text-red-700" : "bg-red-600 text-white"
+            }`}
+          >
             {badgeLabel}
           </span>
         )}
       </span>
 
-      <span className="text-sm font-medium">Cart</span>
+      <span>Cart</span>
     </Link>
   );
 }
