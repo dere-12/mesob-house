@@ -118,7 +118,7 @@ export default function CartPage() {
                 href="/checkout"
                 className="touch-target rounded-md bg-gray-900 px-5 py-2 text-white transition-colors hover:bg-red-700"
               >
-                Proceed to Checkout
+                <p className="text-white">Proceed to Checkout</p>
               </Link>
             </div>
           </section>

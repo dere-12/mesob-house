@@ -60,9 +60,10 @@ export default function HomePage() {
 
             <Link
               href="/menu"
-              className="touch-target mt-6 inline-flex rounded-md bg-gray-900 px-5 py-3 font-semibold text-white transition-colors hover:bg-gray-700"
+              className="touch-target mt-6 inline-flex rounded-md bg-gray-900 px-5 py-3 font-semibold transition-colors hover:bg-gray-400"
             >
-              Explore Our Menu
+              <h3 className="text-white">Explore Our Menu</h3>
+
               <span aria-hidden="true" className="ml-2">
                 →
               </span>
