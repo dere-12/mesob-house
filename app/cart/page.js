@@ -28,9 +28,9 @@ export default function CartPage() {
 
           <Link
             href="/menu"
-            className="touch-target mt-4 rounded-md bg-gray-900 px-5 py-2 text-white transition-colors hover:bg-red-700"
+            className="touch-target mt-4 rounded-md bg-gray-900 px-5 py-2 transition-colors hover:bg-red-700"
           >
-            Browse Menu
+            <p className="text-white">Browse Menu</p>
           </Link>
         </div>
       ) : (
