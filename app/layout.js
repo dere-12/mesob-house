@@ -47,12 +47,12 @@ export default function RootLayout({ children }) {
       className={`${playfairDisplay.variable} ${plusJakartaSans.variable}`}
     >
       <body
-        className={`${plusJakartaSans.className} flex min-h-screen flex-col`}
+        className={`${plusJakartaSans.className} grid min-h-screen grid-rows-[auto_1fr_auto]`}
       >
         <Providers>
           <Header />
 
-          <div id="site-content" className="flex-1">
+          <div id="site-content" className="flex min-w-0 flex-col">
             {children}
           </div>
 

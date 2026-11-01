@@ -17,7 +17,7 @@ export default async function OrdersPage() {
   const orders = await getOrdersFor(user.id);
 
   return (
-    <main className="mx-auto w-[90%] max-w-3xl py-10">
+    <main className="mx-auto flex-1 w-[90%] max-w-3xl py-10">
       <h1 className="font-display text-3xl font-bold">My Orders</h1>
 
       <p className="mt-2 text-gray-600">Orders belonging to {user.name}.</p>

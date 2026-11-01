@@ -14,7 +14,7 @@ export default async function CheckoutPage() {
   }
 
   return (
-    <main className="mx-auto w-[90%] max-w-3xl py-10">
+    <main className="mx-auto flex-1 w-[90%] max-w-3xl py-10">
       <h1 className="text-3xl font-bold">Checkout</h1>
 
       <p className="mt-3 text-gray-600">
