@@ -5,7 +5,7 @@ application built with Next.js.
 
 The project demonstrates Next.js App Router, server-side data fetching,
 client-side data synchronization, authentication, authorization,
-validation, data visualization, mapping, and file exports.
+validation, data visualization, and mapping.
 
 ## Features
 
@@ -29,7 +29,6 @@ validation, data visualization, mapping, and file exports.
 - View dashboard order statistics.
 - Visualize revenue by neighbourhood.
 - Sort and paginate order records.
-- Export visible order-table records as CSV.
 
 ### Application Features
 
@@ -109,6 +108,78 @@ mesob-house/
 |   └── BOUNDARY.md
 |   └── AUTH.md
 ├── README.md
+```
+
+## Live Project
+
+Visit the deployed application:
+
+- **Live Demo:** [Mesob House](http://mesob-house-neon.vercel.app/)
+- **GitHub Repository:** [Mesob House Repository](https://github.com/dere-12/mesob-house.git)
+
+**Demo Access**
+
+The application provides demo accounts for exploring customer and staff features.
+
+| Role     | Email                      | Password |
+| -------- | -------------------------- | -------- |
+| Customer | `customer@addiseats.local` | `1234`   |
+| Staff    | `staff@addiseats.local`    | `1234`   |
+
+You can also select **Customer** or **Staff** on the sign-in page to fill in the corresponding demo credentials automatically.
+
+## Installation and Setup
+
+Follow these steps to run Mesob House locally.
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (a supported version for the Next.js version used by this project)
+- npm
+- Git
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/dere-12/mesob-house.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd mesob-house
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env.local` file in the project root and add the environment variables required by the application.
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 5. Build for Production
+
+To create a production build, run:
+
+```bash
+npm run build
+```
+
+To start the production server after building, run:
+
+```bash
+npm run start
 ```
 
 ## Acknowledgments & Credits

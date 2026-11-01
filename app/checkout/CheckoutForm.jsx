@@ -34,9 +34,9 @@ export default function CheckoutForm() {
 
         <Link
           href="/menu"
-          className="touch-target mt-4 rounded-md bg-gray-900 px-5 py-2 text-white hover:bg-gray-700"
+          className="touch-target mt-4 rounded-md bg-gray-900 px-5 py-2 hover:bg-gray-700"
         >
-          Browse Menu
+          <p className="text-white">Browse Menu</p>
         </Link>
       </section>
     );

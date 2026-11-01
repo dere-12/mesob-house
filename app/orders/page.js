@@ -29,10 +29,10 @@ export default async function OrdersPage() {
           </p>
 
           <Link
-            href="/menu"
-            className="touch-target mt-4 font-medium text-red-600 hover:underline"
+            href="/checkout"
+            className="touch-target mt-4 rounded-md bg-gray-900 px-5 py-2 transition-colors hover:bg-red-700"
           >
-            Browse Menu
+            <p className="text-white">Back to Checkout</p>
           </Link>
         </div>
       ) : (
